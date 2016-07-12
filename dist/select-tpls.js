@@ -95,6 +95,7 @@ angular.module('oi.select')
             if (event && event.target.nodeName !== 'INPUT') return; //for IE
 
             isBlur = false;
+            isFocused = false;
 
             if (isMousedown) {
                 isBlur = true;
@@ -921,7 +922,7 @@ angular.module('oi.select')
                 }
 
                 function compact(value) {
-                    value = value instanceof Array ? value : value ? [value]: [];
+                    value = value instanceof Array ? value : value !== undefined ? [value]: [];
 
                     return value.filter(function(item) {
                         return item !== undefined && (item instanceof Array && item.length || selectAsFn || getLabel(item));
